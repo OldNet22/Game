@@ -1,4 +1,6 @@
-﻿namespace Game.GameWorld;
+﻿using System.Diagnostics;
+
+namespace Game.GameWorld;
 
 internal class Map
 {
@@ -12,5 +14,27 @@ internal class Map
         Height = height;
 
         cells = new Cell[Width, Height];
+
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                cells[y, x] = new Cell();
+            }
+        }
+    }
+
+    internal Cell? GetCell(int y, int x)
+    {
+        //ToDo: Fix! 
+        try
+        {
+            return cells[y, x];
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return null;
+        }
     }
 }
