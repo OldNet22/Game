@@ -66,7 +66,7 @@ internal class GamePlay
     {
         //ToDo: Read from config
         //ToDo: Random position
-        map = new Map(width: 20, height: 10);
+        map = new Map(width: 10, height: 10);
         var heroCell = map.GetCell(0, 0);
         hero = new Hero(heroCell);
         map.Creatures.Add(hero);
