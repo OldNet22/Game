@@ -16,7 +16,7 @@ internal class Map
         Width = width;
         Height = height;
 
-        cells = new Cell[Width, Height];
+        cells = new Cell[Height, Width];
 
         for (int y = 0; y < height; y++)
         {
