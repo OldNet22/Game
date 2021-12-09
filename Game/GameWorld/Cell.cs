@@ -1,9 +1,9 @@
 ﻿namespace Game.GameWorld;
 
-internal class Cell
+public class Cell : IDrawable
 {
     public string Symbol => ". ";
-    public ConsoleColor Color { get; } 
+    public ConsoleColor Color { get; set; } 
 
     public Cell()
     {

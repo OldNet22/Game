@@ -1,4 +1,5 @@
 ﻿
+using Game.Entities;
 using Game.GameWorld;
 
 namespace Game;
@@ -42,9 +43,19 @@ internal class GamePlay
             for (int x = 0; x < map.Width; x++)
             {
                 Cell? cell = map.GetCell(y, x);
+                IDrawable drawable = cell;
 
-                Console.ForegroundColor = cell.Color;
-                Console.Write(cell.Symbol);
+                foreach (Creature creature in map.Creatures)
+                {
+                    if(creature.Cell == cell)
+                    {
+                        drawable = creature;
+                        break;
+                    }
+                }
+
+                Console.ForegroundColor = drawable?.Color ?? ConsoleColor.White;
+                Console.Write(drawable.Symbol);
             }
             Console.WriteLine();
         }
@@ -54,7 +65,10 @@ internal class GamePlay
     private void Initialize()
     {
         //ToDo: Read from config
-        map = new Map(width: 10, height: 10);
-        hero = new Hero();
+        //ToDo: Random position
+        map = new Map(width: 20, height: 10);
+        var heroCell = map.GetCell(0, 0);
+        hero = new Hero(heroCell);
+        map.Creatures.Add(hero);
     }
 }
