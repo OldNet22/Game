@@ -1,7 +1,7 @@
 ﻿
 using Game;
 
-GamePlay game = new GamePlay();
+GamePlay game = new();
 game.Run();
 
 Console.WriteLine("Thanks for playing");
