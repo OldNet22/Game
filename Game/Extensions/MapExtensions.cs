@@ -11,10 +11,10 @@ namespace Game.Extensions
 {
     internal static class MapExtensions
     {
-        [return: MaybeNull]
+       // [return: MaybeNull]
         internal static IDrawable CreatureAtExtension(this List<Creature> creatures, Cell cell)
         {
-            IDrawable? result = null;
+            IDrawable? result = cell;
             foreach (Creature creature in creatures)
             {
                 if (creature.Cell == cell)

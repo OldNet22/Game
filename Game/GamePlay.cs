@@ -85,17 +85,7 @@ internal class GamePlay
             {
                 Cell? cell = map.GetCell(y, x);
                 ArgumentNullException.ThrowIfNull(cell);
-                IDrawable? drawable = cell;
-
-                drawable = map.Creatures.CreatureAtExtension(cell);
-                //foreach (Creature creature in map.Creatures)
-                //{
-                //    if(creature.Cell == cell)
-                //    {
-                //        drawable = creature;
-                //        break;
-                //    }
-                //}
+                IDrawable drawable = map.Creatures.CreatureAtExtension(cell);
 
                 Console.ForegroundColor = drawable.Color;  //drawable?.Color ?? ConsoleColor.White;
                 Console.Write(drawable.Symbol);
