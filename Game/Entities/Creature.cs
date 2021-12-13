@@ -4,13 +4,23 @@ namespace Game.Entities
 {
     internal class Creature : IDrawable
     {
+        private Cell cell;
         public string Symbol { get; set; }
         public ConsoleColor Color { get; set; } = ConsoleColor.Green;
-        public Cell Cell { get; }
+        public Cell Cell 
+        { 
+            get => cell;
+            set
+            {
+                ArgumentNullException.ThrowIfNull(nameof(value));
+                cell = value;
+            }
+        }
 
         public Creature(Cell cell, string symbol)
         {
-            Cell = cell;
+            ArgumentNullException.ThrowIfNull(nameof(cell));
+            this.cell = cell;
             Symbol = symbol;
         }
 
