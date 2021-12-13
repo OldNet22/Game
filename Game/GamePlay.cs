@@ -7,8 +7,17 @@ namespace Game;
 internal class GamePlay
 {
     //ToDo: Fix ?
-    private Map? map;
-    private Hero? hero;
+    private Map map = null!;
+    private Hero hero = null!;
+
+    //public GamePlay()
+    //{
+    //    map = new Map(width: 10, height: 10);
+    //    Cell heroCell = map.GetCell(0, 0)!;
+    //    ArgumentNullException.ThrowIfNull(heroCell);
+    //    hero = new Hero(heroCell);
+    //    map.Creatures.Add(hero);
+    //}
 
     internal void Run()
     {
@@ -43,6 +52,7 @@ internal class GamePlay
             for (int x = 0; x < map.Width; x++)
             {
                 Cell? cell = map.GetCell(y, x);
+                ArgumentNullException.ThrowIfNull(cell);
                 IDrawable drawable = cell;
 
                 foreach (Creature creature in map.Creatures)
@@ -54,7 +64,7 @@ internal class GamePlay
                     }
                 }
 
-                Console.ForegroundColor = drawable?.Color ?? ConsoleColor.White;
+                Console.ForegroundColor = drawable.Color;  //drawable?.Color ?? ConsoleColor.White;
                 Console.Write(drawable.Symbol);
             }
             Console.WriteLine();
@@ -68,6 +78,7 @@ internal class GamePlay
         //ToDo: Random position
         map = new Map(width: 10, height: 10);
         var heroCell = map.GetCell(0, 0);
+        ArgumentNullException.ThrowIfNull(heroCell);
         hero = new Hero(heroCell);
         map.Creatures.Add(hero);
     }

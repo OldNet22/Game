@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Game.GamePlay">
-    <Position X="6.5" Y="2" Width="1.5" />
+    <Position X="3.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAAAEAAAQAAAAAAAAAAAAAAAAAAgAAAAAABAAI=</HashCode>
       <FileName>GamePlay.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="hero" />
       <Field Name="map" />
+      <Field Name="hero" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Game.GameWorld.Map">
@@ -30,7 +30,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Game.Entities.Creature">
-    <Position X="4.25" Y="0.5" Width="1.5" />
+    <Position X="6" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAgAAACAA=</HashCode>
       <FileName>Entities\Creature.cs</FileName>
@@ -41,14 +41,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Game.Entities.Hero">
-    <Position X="4.25" Y="2.75" Width="1.5" />
+    <Position X="6" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\Hero.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Game.GameWorld.IDrawable">
-    <Position X="2" Y="0.5" Width="1.5" />
+    <Position X="1.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAACAA=</HashCode>
       <FileName>GameWorld\IDrawable.cs</FileName>
