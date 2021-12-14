@@ -11,10 +11,9 @@ namespace Game.Extensions
 {
     internal static class MapExtensions
     {
-       // [return: MaybeNull]
         internal static IDrawable CreatureAtExtension(this List<Creature> creatures, Cell cell)
         {
-            IDrawable? result = cell;
+            IDrawable result = cell;
             foreach (Creature creature in creatures)
             {
                 if (creature.Cell == cell)
@@ -25,7 +24,6 @@ namespace Game.Extensions
             }
 
             return result;
-
         }
     }
 }

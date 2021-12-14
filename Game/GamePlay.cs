@@ -52,27 +52,27 @@ internal class GamePlay
         switch (keyPressed)
         {
             case ConsoleKey.LeftArrow:
-                Move(hero.Cell.Y, hero.Cell.X - 1);
+                Move(Direction.West);
                 break;
             case ConsoleKey.RightArrow:
-                Move(hero.Cell.Y, hero.Cell.X + 1);
+                Move(Direction.East);
                 break;
             case ConsoleKey.UpArrow:
-                Move(hero.Cell.Y - 1, hero.Cell.X);
+                Move(Direction.North);
                 break;
             case ConsoleKey.DownArrow:
-                Move(hero.Cell.Y + 1, hero.Cell.X);
+                Move(Direction.South);
                 break;
             default:
                 break;
         }
     }
 
-    private void Move(int y, int x)
+    private void Move(Position movement)
     {
-        var newPosition = map.GetCell(y, x);
-        if (newPosition != null) hero.Cell = newPosition;
-
+        Position newPosition = hero.Cell.Position + movement;
+        Cell newCell = map.GetCell(newPosition)!;
+        if (newCell != null) hero.Cell = newCell;
     }
 
     private void DrawMap()
