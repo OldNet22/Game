@@ -14,14 +14,14 @@ List<int> list = new List<int>();
 //Test<string> test2 = new Test<string>();
 //Test<Hero> test23 = new Test<Hero>();
 
-//LimitedList<Creature> limitedList = new LimitedList<Creature>(8);
+LimitedList<Creature> limitedList = new LimitedList<Creature>(8);
 
-//var x = limitedList[1];
+var x = limitedList[1];
 
-//foreach (var item in limitedList)
-//{
+foreach (var item in limitedList)
+{
 
-//}
+}
 
 GamePlay game = new();
 game.Run();
