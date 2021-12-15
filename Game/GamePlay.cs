@@ -78,22 +78,10 @@ internal class GamePlay
     private void DrawMap()
     {
         UI.Clear();
-
-        for (int y = 0; y < map.Height; y++)
-        {
-            for (int x = 0; x < map.Width; x++)
-            {
-                Cell? cell = map.GetCell(y, x);
-                ArgumentNullException.ThrowIfNull(cell);
-                IDrawable drawable = map.Creatures.CreatureAtExtension(cell);
-
-                Console.ForegroundColor = drawable.Color;  //drawable?.Color ?? ConsoleColor.White;
-                Console.Write(drawable.Symbol);
-            }
-            Console.WriteLine();
-        }
-        Console.ForegroundColor= ConsoleColor.White;
+        UI.Draw(map);
     }
+
+  
 
     private void Initialize()
     {
@@ -104,5 +92,12 @@ internal class GamePlay
         ArgumentNullException.ThrowIfNull(heroCell);
         hero = new Hero(heroCell);
         map.Creatures.Add(hero);
+
+        map.GetCell(2, 7)!?.Items.Add(Item.Coin());
+        map.GetCell(6, 2)!?.Items.Add(Item.Coin());
+        map.GetCell(6, 1)!?.Items.Add(Item.Stone());
+        map.GetCell(5, 5)!?.Items.Add(Item.Stone());
+        map.GetCell(5, 5)!?.Items.Add(Item.Coin());
+        map.GetCell(5, 5)!?.Items.AddRange(new List<Item> { Item.Coin(), Item.Coin() });
     }
 }
