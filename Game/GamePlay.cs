@@ -62,9 +62,31 @@ internal class GamePlay
                 break;
             case ConsoleKey.DownArrow:
                 Move(Direction.South);
+                break;  
+            case ConsoleKey.P:
+                PickUp();
                 break;
             default:
                 break;
+        }
+    }
+
+    private void PickUp()
+    {
+        if (hero.BackPack.IsFull)
+        {
+            Console.WriteLine("BackPack is full");
+            return;
+        }
+
+        var items = hero.Cell.Items;
+        var item = items.FirstOrDefault();
+        if (item is null) return;
+
+        if (hero.BackPack.Add(item))
+        {
+            Console.WriteLine($"Hero pick up {item}");
+            items.Remove(item);
         }
     }
 
