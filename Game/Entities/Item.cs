@@ -18,7 +18,7 @@ namespace Game.Entities
 
         public override string ToString() => name;
 
-        public static Item Coin() => new Item("c ", ConsoleColor.Yellow, "Coin");
+        public static Item Coin() => new("c ", ConsoleColor.Yellow, "Coin");
         public static Item Stone() => new Item("s ", ConsoleColor.Gray, "Stone");
        
     }

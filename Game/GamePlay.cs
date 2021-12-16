@@ -65,9 +65,20 @@ internal class GamePlay
                 break;  
             case ConsoleKey.P:
                 PickUp();
+                break; 
+            case ConsoleKey.I:
+                Inventory();
                 break;
             default:
                 break;
+        }
+    }
+
+    private void Inventory()
+    {
+        for (int i = 0; i < hero.BackPack.Count; i++)
+        {
+            UI.AddMessage($"{i + 1}: \t{hero.BackPack[i]}");
         }
     }
 
@@ -75,7 +86,7 @@ internal class GamePlay
     {
         if (hero.BackPack.IsFull)
         {
-            Console.WriteLine("BackPack is full");
+            UI.AddMessage("BackPack is full");
             return;
         }
 
@@ -85,7 +96,7 @@ internal class GamePlay
 
         if (hero.BackPack.Add(item))
         {
-            Console.WriteLine($"Hero pick up {item}");
+            UI.AddMessage($"Hero pick up {item}");
             items.Remove(item);
         }
     }

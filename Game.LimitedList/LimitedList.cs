@@ -10,7 +10,7 @@ namespace Game.LimitedList
     public class LimitedList<T> : IEnumerable<T>
     {
         private int capacity;
-        private List<T> list;
+        protected List<T> list;
 
         public bool IsFull => capacity <= Count;
         public int Count => list.Count;
@@ -22,7 +22,7 @@ namespace Game.LimitedList
             list = new List<T>(this.capacity);
         }
 
-        public bool Add(T item)
+        public virtual bool Add(T item)
         {
             ArgumentNullException.ThrowIfNull(item);
             //if(item is null)

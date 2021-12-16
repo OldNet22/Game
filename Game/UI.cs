@@ -1,5 +1,6 @@
 ﻿using Game.Extensions;
 using Game.GameWorld;
+using Game.LimitedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,9 @@ namespace Game
 {
     internal class UI
     {
+
+        private static MessageLog<string> messageLog = new(6);
+
         internal static void Clear()
         {
             Console.CursorVisible = false;
@@ -37,5 +41,14 @@ namespace Game
             }
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        //ToDo: Check return bool
+        internal static void AddMessage(string message) 
+        {
+                Console.WriteLine(message);
+                // messageLog.Add(message);
+            
+        } 
+        
     }
 }
