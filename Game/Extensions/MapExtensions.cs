@@ -29,17 +29,19 @@ namespace Game.Extensions
         [return: MaybeNull]
         internal static IDrawable CreatureAtExtension2(this List<Creature> creatures, Cell cell)
         {
-            IDrawable? result = null;
-            foreach (Creature creature in creatures)
-            {
-                if (creature.Cell == cell)
-                {
-                    result = creature;
-                    break;
-                }
-            }
+            //IDrawable? result = null;
+            //foreach (Creature creature in creatures)
+            //{
+            //    if (creature.Cell == cell)
+            //    {
+            //        result = creature;
+            //        break;
+            //    }
+            //}
 
-            return result;
+            //return result;
+
+            return creatures.FirstOrDefault(creature => creature.Cell == cell);
         }
     }
 }

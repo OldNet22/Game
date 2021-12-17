@@ -43,12 +43,20 @@ namespace Game
         }
 
         //ToDo: Check return bool
-        internal static void AddMessage(string message) 
+        internal static void AddMessage(string message) => messageLog.Add(message);
+
+        internal static  void PrintLog()
         {
-                Console.WriteLine(message);
-                // messageLog.Add(message);
-            
-        } 
+            messageLog.Print(m => Console.WriteLine(m));
+            messageLog.Print(Something);
+            messageLog.Print(Console.WriteLine);
+        }
+
+        public static  void Something(string message)
+        {
+            Console.WriteLine(message);
+        }
+     
         
     }
 }

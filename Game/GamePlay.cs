@@ -63,15 +63,24 @@ internal class GamePlay
             case ConsoleKey.DownArrow:
                 Move(Direction.South);
                 break;  
-            case ConsoleKey.P:
-                PickUp();
-                break; 
-            case ConsoleKey.I:
-                Inventory();
-                break;
+            //case ConsoleKey.P:
+            //    PickUp();
+            //    break; 
+            //case ConsoleKey.I:
+            //    Inventory();
+            //    break;
             default:
                 break;
         }
+
+        var actionMeny = new Dictionary<ConsoleKey, Action>()
+        {
+            {ConsoleKey.P, PickUp },
+            {ConsoleKey.I, Inventory }
+        };
+
+        if(actionMeny.ContainsKey(keyPressed))
+            actionMeny[keyPressed]?.Invoke();
     }
 
     private void Inventory()
