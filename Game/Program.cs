@@ -23,6 +23,10 @@ using Game.LimitedList;
 //    Console.WriteLine(item);
 //}
 
+var pos = new Position(5,5);
+var (X,Y) = pos;
+
+
 GamePlay game = new();
 game.Run();
 
