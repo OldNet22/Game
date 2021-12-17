@@ -7,6 +7,7 @@ namespace Game.Entities
         private Cell cell;
         public string Symbol { get; set; }
         public ConsoleColor Color { get; set; } = ConsoleColor.Green;
+        public int Health { get; }
         public Cell Cell 
         { 
             get => cell;

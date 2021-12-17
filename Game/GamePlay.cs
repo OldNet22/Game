@@ -121,6 +121,8 @@ internal class GamePlay
     {
         UI.Clear();
         UI.Draw(map);
+        UI.PrintStats($"Health: {hero.Health}");
+        UI.PrintLog();
     }
 
   

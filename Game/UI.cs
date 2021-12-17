@@ -47,11 +47,18 @@ namespace Game
 
         internal static  void PrintLog()
         {
-            messageLog.Print(m => Console.WriteLine(m));
-            messageLog.Print(Something);
-            messageLog.Print(Console.WriteLine);
+            messageLog.Print(m => Console.WriteLine(m + new string(' ', Console.WindowWidth - m.Length )));
+            //messageLog.Print(Something);
+            //messageLog.Print(Console.WriteLine);
         }
 
+        public static  void PrintStats(string stats)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(stats);
+            Console.ForegroundColor = ConsoleColor.White;
+        }     
+        
         public static  void Something(string message)
         {
             Console.WriteLine(message);
