@@ -126,7 +126,7 @@ internal class GamePlay
         map = new Map(width: 10, height: 10);
         var heroCell = map.GetCell(0, 0);
         ArgumentNullException.ThrowIfNull(heroCell);
-        hero = new Hero(heroCell);
+        hero = new Hero(heroCell, UI.AddMessage);
         map.Creatures.Add(hero);
 
         map.GetCell(2, 7)!?.Items.Add(Item.Coin());

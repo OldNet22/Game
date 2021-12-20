@@ -9,7 +9,7 @@ namespace Game.Entities.Creatures
         public LimitedList<Item> BackPack { get; }
 
 
-        public Hero(Cell cell) : base(cell, "H ")
+        public Hero(Cell cell, Action<String> addMessage) : base(cell, "H ", 100, addMessage)
         {
             Color = ConsoleColor.Yellow;
             BackPack = new LimitedList<Item>(3); //ToDo Read from config
