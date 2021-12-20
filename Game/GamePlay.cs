@@ -134,7 +134,7 @@ internal class GamePlay
     {
         UI.Clear();
         UI.Draw(map);
-        UI.PrintStats($"Health: {hero.Health}");
+        UI.PrintStats($"Health: {hero.Health}, Enemys: {map.Creatures.Count -1}");
         UI.PrintLog();
     }
 
