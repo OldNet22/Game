@@ -2,7 +2,7 @@
 
 namespace Game.GameWorld;
 
-internal class Cell : IDrawable
+public class Cell : IDrawable
 {
     public Position Position { get; set; }
     public string Symbol => ". ";

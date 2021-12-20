@@ -3,28 +3,25 @@
   <Class Name="Game.GamePlay">
     <Position X="3.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAEAAAQAAAAAAAAAAAAAAAAAAgAAAAAABAAI=</HashCode>
+      <HashCode>AQAAECAAAMCQEQAAAAAAAAAAAAAAAAAAgAAAAgABAQI=</HashCode>
       <FileName>GamePlay.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="map" />
-      <Field Name="hero" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Game.GameWorld.Map">
     <Position X="8.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAAAAAABAAAAAAAAAAAAEAiAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>QAAAAAAABAAAAAAAAAAAAEAiAIAAAAAAAEAAAAAAAAA=</HashCode>
       <FileName>GameWorld\Map.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="cells" />
     </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Game.GameWorld.Cell" BaseTypeListCollapsed="true">
     <Position X="11.25" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAACAA=</HashCode>
+      <HashCode>AAAAAAAAAAAACAAgAAAAAAAAAAAAAAAAAAAAgAAACAA=</HashCode>
       <FileName>GameWorld\Cell.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />

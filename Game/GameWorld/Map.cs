@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Game.GameWorld;
 
-internal class Map
+public class Map : IMap
 {
     private Cell[,] cells;
     public int Width { get; }
@@ -28,11 +28,11 @@ internal class Map
         }
     }
 
-    [return: MaybeNull]
-    internal Cell GetCell(int y, int x)
+    //[return: MaybeNull]
+    public Cell? GetCell(int y, int x)
     {
         //ToDo: Fix! 
-        if(x < 0 ||x >= Width || y < 0 || y >= Height)
+        if (x < 0 || x >= Width || y < 0 || y >= Height)
         {
             return null;
         }
@@ -40,19 +40,19 @@ internal class Map
         return cells[y, x];
     }
 
-    [return: MaybeNull]
-    internal Cell GetCell(Position newPosition)
+    //[return: MaybeNull]
+    public Cell? GetCell(Position newPosition)
     {
         return GetCell(newPosition.Y, newPosition.X);
     }
 
-    internal void Place(Creature creature)
+    public void Place(Creature creature)
     {
         if (Creatures.Where(c => c.Cell == creature.Cell).Count() >= 1) return;
         Creatures.Add(creature);
     }
 
-    internal IDrawable? CreatureAt(Cell? cell)
+    public IDrawable? CreatureAt(Cell? cell)
     {
         return Creatures.FirstOrDefault(creature => creature.Cell == cell);
     }

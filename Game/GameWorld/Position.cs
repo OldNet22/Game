@@ -27,9 +27,8 @@ namespace Game.GameWorld
     //        new Position(p1.Y + p2.Y, p1.X + p2.X); 
     //}
 
-    internal record Position(int Y, int X)
+    public record Position(int Y, int X)
     {
-       
         public static Position operator + (Position p1, Position p2) => 
             new Position(p1.Y + p2.Y, p1.X + p2.X);
 

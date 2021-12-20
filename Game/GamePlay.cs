@@ -9,9 +9,15 @@ namespace Game;
 internal class GamePlay
 {
     //ToDo: Fix ?
-    private Map map = null!;
+    private IMap map = null!;
     private Hero hero = null!;
     private bool gameInProgress;
+    private readonly IUI ui;
+
+    public GamePlay(IUI consoleUI)
+    {
+        ui = consoleUI;
+    }
 
     internal void Run()
     {
@@ -40,7 +46,7 @@ internal class GamePlay
 
     private void GetInput()
     {
-        var keyPressed = UI.GetKey();
+        var keyPressed = ui.GetKey();
 
         switch (keyPressed)
         {
@@ -90,18 +96,18 @@ internal class GamePlay
         if (item != null && hero.BackPack.Remove(item))
         {
             hero.Cell.Items.Add(item);
-            UI.AddMessage($"Hero dropped the {item}");
+            ui.AddMessage($"Hero dropped the {item}");
         }
         else
-            UI.AddMessage("Backpack is empty");
+            ui.AddMessage("Backpack is empty");
     }
 
     private void Inventory()
     {
-        UI.AddMessage("Inventory");
+        ui.AddMessage("Inventory");
         for (int i = 0; i < hero.BackPack.Count; i++)
         {
-            UI.AddMessage($"{i + 1}: {hero.BackPack[i]}");
+            ui.AddMessage($"{i + 1}: {hero.BackPack[i]}");
         }
     }
 
@@ -109,7 +115,7 @@ internal class GamePlay
     {
         if (hero.BackPack.IsFull)
         {
-            UI.AddMessage("BackPack is full");
+            ui.AddMessage("BackPack is full");
             return;
         }
 
@@ -121,13 +127,13 @@ internal class GamePlay
         {
             usable.Use(hero);
             hero.Cell.Items.Remove(item);
-            UI.AddMessage($"Hero use the {item}");
+            ui.AddMessage($"Hero use the {item}");
             return;
         }
 
         if (hero.BackPack.Add(item))
         {
-            UI.AddMessage($"Hero pick up {item}");
+            ui.AddMessage($"Hero pick up {item}");
             items.Remove(item);
         }
     }
@@ -146,16 +152,16 @@ internal class GamePlay
         {
             hero.Cell = newCell;
             if (newCell.Items.Any())
-                UI.AddMessage("You see " + string.Join(", ", newCell.Items.Select(i => i.ToString())));
+                ui.AddMessage("You see " + string.Join(", ", newCell.Items.Select(i => i.ToString())));
         }
     }
 
     private void DrawMap()
     {
-        UI.Clear();
-        UI.Draw(map);
-        UI.PrintStats($"Health: {hero.Health}, Enemys: {map.Creatures.Count -1}");
-        UI.PrintLog();
+        ui.Clear();
+        ui.Draw(map);
+        ui.PrintStats($"Health: {hero.Health}, Enemys: {map.Creatures.Count -1}");
+        ui.PrintLog();
     }
 
   
@@ -170,7 +176,7 @@ internal class GamePlay
         ArgumentNullException.ThrowIfNull(heroCell);
         ArgumentNullException.ThrowIfNull(defaultCreatureCell);
 
-        hero = new Hero(heroCell, UI.AddMessage);
+        hero = new Hero(heroCell, ui.AddMessage);
         map.Creatures.Add(hero);
 
         var r = new Random();
@@ -186,12 +192,12 @@ internal class GamePlay
         map.GetCell(RH(r), RW(r))?.Items.Add(Potion.HealthPortion());
         map.GetCell(RH(r), RW(r))?.Items.Add(Potion.HealthPortion());
 
-        map.Place(new Orc(      map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   120, UI.AddMessage));
-        map.Place(new Orc(      map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   120, UI.AddMessage));
-        map.Place(new Troll(    map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   160, UI.AddMessage));
-        map.Place(new Troll(    map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   160, UI.AddMessage));
-        map.Place(new Goblin(   map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   200, UI.AddMessage));
-        map.Place(new Goblin(   map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   200, UI.AddMessage));
+        map.Place(new Orc(      map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   120, ui.AddMessage));
+        map.Place(new Orc(      map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   120, ui.AddMessage));
+        map.Place(new Troll(    map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   160, ui.AddMessage));
+        map.Place(new Troll(    map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   160, ui.AddMessage));
+        map.Place(new Goblin(   map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   200, ui.AddMessage));
+        map.Place(new Goblin(   map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   200, ui.AddMessage));
 
         int RW(Random r)
         {
