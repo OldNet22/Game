@@ -45,4 +45,10 @@ internal class Map
     {
         return GetCell(newPosition.Y, newPosition.X);
     }
+
+    internal void Place(Creature creature)
+    {
+        if (Creatures.Where(c => c.Cell == creature.Cell).Count() >= 1) return;
+        Creatures.Add(creature);
+    }
 }

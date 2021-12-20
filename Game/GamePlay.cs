@@ -143,18 +143,40 @@ internal class GamePlay
     private void Initialize()
     {
         //ToDo: Read from config
-        //ToDo: Random position
         map = new Map(width: 10, height: 10);
         var heroCell = map.GetCell(0, 0);
+        var defaultCreatureCell = map.GetCell(5, 5);
+
         ArgumentNullException.ThrowIfNull(heroCell);
+        ArgumentNullException.ThrowIfNull(defaultCreatureCell);
+
         hero = new Hero(heroCell, UI.AddMessage);
         map.Creatures.Add(hero);
 
-        map.GetCell(2, 7)!?.Items.Add(Item.Coin());
-        map.GetCell(6, 2)!?.Items.Add(Item.Coin());
-        map.GetCell(6, 1)!?.Items.Add(Item.Stone());
-        map.GetCell(5, 5)!?.Items.Add(Item.Stone());
-        map.GetCell(5, 5)!?.Items.Add(Item.Coin());
-        map.GetCell(5, 5)!?.Items.AddRange(new List<Item> { Item.Coin(), Item.Coin() });
+        var r = new Random();
+
+        map.GetCell(RH(r), RW(r))?.Items.Add(Item.Coin());
+        map.GetCell(RH(r), RW(r))?.Items.Add(Item.Coin());
+        map.GetCell(RH(r), RW(r))?.Items.Add(Item.Stone());
+        map.GetCell(RH(r), RW(r))?.Items.Add(Item.Stone());
+        map.GetCell(RH(r), RW(r))?.Items.Add(Item.Coin());
+        map.GetCell(RH(r), RW(r))?.Items.AddRange(new List<Item> { Item.Coin(), Item.Coin() });
+
+        map.Place(new Orc(      map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   120, UI.AddMessage));
+        map.Place(new Orc(      map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   120, UI.AddMessage));
+        map.Place(new Troll(    map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   160, UI.AddMessage));
+        map.Place(new Troll(    map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   160, UI.AddMessage));
+        map.Place(new Goblin(   map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   200, UI.AddMessage));
+        map.Place(new Goblin(   map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell ,   200, UI.AddMessage));
+
+        int RW(Random r)
+        {
+            return r.Next(0, map.Width);
+        }
+
+        int RH(Random r)
+        {
+            return r.Next(0, map.Height);
+        }
     }
 }
