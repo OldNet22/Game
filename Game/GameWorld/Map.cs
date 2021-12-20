@@ -51,4 +51,9 @@ internal class Map
         if (Creatures.Where(c => c.Cell == creature.Cell).Count() >= 1) return;
         Creatures.Add(creature);
     }
+
+    internal IDrawable? CreatureAt(Cell? cell)
+    {
+        return Creatures.FirstOrDefault(creature => creature.Cell == cell);
+    }
 }

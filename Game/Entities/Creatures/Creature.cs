@@ -6,11 +6,17 @@ namespace Game.Entities.Creatures
     {
         private Cell cell;
         private int health;
+        private ConsoleColor color;
+
         private string name => this.GetType().Name;
 
         public string Symbol { get; set; }
         public int MaxHealth { get; }
-        public ConsoleColor Color { get; set; } = ConsoleColor.Green;
+        public ConsoleColor Color
+        {
+            get => IsDead ? ConsoleColor.Gray : color;
+            set => color = value;
+        }
         public int Health
         {
             get => health < 0 ? 0 : health;
@@ -42,7 +48,37 @@ namespace Game.Entities.Creatures
             this.cell = cell;
             Symbol = symbol;
             MaxHealth = maxHealth;
+            health = maxHealth;
             AddMessage = addMessage;
+            Color = ConsoleColor.Green;
         }
+
+        public void Attack(Creature target)
+        {
+            if (target.IsDead) return;
+
+            var thisName = this.name;
+            var targetName = target.name;
+
+            target.Health -= Damage;
+            AddMessage?.Invoke($"The {thisName} attacks the {targetName} for {this.Damage}");
+
+            if (target.IsDead)
+            {
+                AddMessage?.Invoke($"The {targetName} is dead");
+                return;
+            }
+
+            Health -= target.Damage;
+            AddMessage?.Invoke($"The {targetName} attacks the {thisName} for {target.Damage}");
+
+            if (IsDead)
+            {
+                AddMessage?.Invoke($"The {thisName} is dead");
+                return;
+            }
+
+        }
+
     }
 }
