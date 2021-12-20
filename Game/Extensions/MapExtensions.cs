@@ -1,4 +1,4 @@
-﻿using Game.Entities;
+﻿using Game.Entities.Creatures;
 using Game.GameWorld;
 using System;
 using System.Collections.Generic;

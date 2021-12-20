@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game
+namespace Game.UserInterface
 {
     internal class UI
     {
@@ -45,25 +45,25 @@ namespace Game
         //ToDo: Check return bool
         internal static void AddMessage(string message) => messageLog.Add(message);
 
-        internal static  void PrintLog()
+        internal static void PrintLog()
         {
-            messageLog.Print(m => Console.WriteLine(m + new string(' ', Console.WindowWidth - m.Length )));
+            messageLog.Print(m => Console.WriteLine(m + new string(' ', Console.WindowWidth - m.Length)));
             //messageLog.Print(Something);
             //messageLog.Print(Console.WriteLine);
         }
 
-        public static  void PrintStats(string stats)
+        public static void PrintStats(string stats)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(stats);
             Console.ForegroundColor = ConsoleColor.White;
-        }     
-        
-        public static  void Something(string message)
+        }
+
+        public static void Something(string message)
         {
             Console.WriteLine(message);
         }
-     
-        
+
+
     }
 }

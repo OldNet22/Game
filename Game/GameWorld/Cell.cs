@@ -1,4 +1,4 @@
-﻿using Game.Entities;
+﻿using Game.Entities.Items;
 
 namespace Game.GameWorld;
 

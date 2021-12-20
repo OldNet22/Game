@@ -1,7 +1,8 @@
-﻿
-using Game.Entities;
+﻿using Game.Entities.Creatures;
+using Game.Entities.Items;
 using Game.Extensions;
 using Game.GameWorld;
+using Game.UserInterface;
 
 namespace Game;
 
@@ -10,15 +11,6 @@ internal class GamePlay
     //ToDo: Fix ?
     private Map map = null!;
     private Hero hero = null!;
-
-    //public GamePlay()
-    //{
-    //    map = new Map(width: 10, height: 10);
-    //    Cell heroCell = map.GetCell(0, 0)!;
-    //    ArgumentNullException.ThrowIfNull(heroCell);
-    //    hero = new Hero(heroCell);
-    //    map.Creatures.Add(hero);
-    //}
 
     internal void Run()
     {

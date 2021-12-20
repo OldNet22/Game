@@ -1,6 +1,6 @@
 ﻿using Game.GameWorld;
 
-namespace Game.Entities
+namespace Game.Entities.Creatures
 {
     internal class Creature : IDrawable
     {
@@ -8,8 +8,8 @@ namespace Game.Entities
         public string Symbol { get; set; }
         public ConsoleColor Color { get; set; } = ConsoleColor.Green;
         public int Health { get; }
-        public Cell Cell 
-        { 
+        public Cell Cell
+        {
             get => cell;
             set
             {

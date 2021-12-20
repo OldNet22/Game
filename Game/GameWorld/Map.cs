@@ -1,4 +1,4 @@
-﻿using Game.Entities;
+﻿using Game.Entities.Creatures;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 

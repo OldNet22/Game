@@ -1,7 +1,7 @@
 ﻿using Game.GameWorld;
 using System;
 
-namespace Game.Entities
+namespace Game.Entities.Items
 {
     public class Item : IDrawable
     {
@@ -20,6 +20,6 @@ namespace Game.Entities
 
         public static Item Coin() => new("c ", ConsoleColor.Yellow, "Coin");
         public static Item Stone() => new Item("s ", ConsoleColor.Gray, "Stone");
-       
+
     }
 }
