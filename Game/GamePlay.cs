@@ -97,9 +97,10 @@ internal class GamePlay
 
     private void Inventory()
     {
+        UI.AddMessage("Inventory");
         for (int i = 0; i < hero.BackPack.Count; i++)
         {
-            UI.AddMessage($"{i + 1}: \t{hero.BackPack[i]}");
+            UI.AddMessage($"{i + 1}: {hero.BackPack[i]}");
         }
     }
 
