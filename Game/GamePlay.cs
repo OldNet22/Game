@@ -68,11 +68,31 @@ internal class GamePlay
         var actionMeny = new Dictionary<ConsoleKey, Action>()
         {
             {ConsoleKey.P, PickUp },
-            {ConsoleKey.I, Inventory }
+            {ConsoleKey.I, Inventory },
+            {ConsoleKey.D, Drop },
+            {ConsoleKey.Q, Quit }
         };
 
         if(actionMeny.ContainsKey(keyPressed))
             actionMeny[keyPressed]?.Invoke();
+    }
+
+    private void Quit()
+    {
+        Environment.Exit(0);
+    }
+
+    private void Drop()
+    {
+        var item = hero.BackPack.FirstOrDefault();
+
+        if (item != null && hero.BackPack.Remove(item))
+        {
+            hero.Cell.Items.Add(item);
+            UI.AddMessage($"Hero dropped the {item}");
+        }
+        else
+            UI.AddMessage("Backpack is empty");
     }
 
     private void Inventory()
