@@ -3,6 +3,7 @@ using Game.Entities.Items;
 using Game.Extensions;
 using Game.GameWorld;
 using Game.UserInterface;
+using Microsoft.Extensions.Configuration;
 
 namespace Game;
 
@@ -13,10 +14,12 @@ internal class GamePlay
     private Hero hero = null!;
     private bool gameInProgress;
     private readonly IUI ui;
+    private readonly IConfiguration config;
 
-    public GamePlay(IUI consoleUI)
+    public GamePlay(IUI consoleUI, IConfiguration config)
     {
         ui = consoleUI;
+        this.config = config;
     }
 
     internal void Run()
@@ -168,8 +171,10 @@ internal class GamePlay
 
     private void Initialize()
     {
-        //ToDo: Read from config
-        map = new Map(width: 10, height: 10);
+        var width = config.GetMapSizeFor("x");
+        var height = config.GetMapSizeFor("y");
+
+        map = new Map(width, height);
         var heroCell = map.GetCell(0, 0);
         var defaultCreatureCell = map.GetCell(5, 5);
 

@@ -1,5 +1,6 @@
 ﻿using Game.Entities.Creatures;
 using Game.GameWorld;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -42,6 +43,12 @@ namespace Game.Extensions
             //return result;
 
             return creatures.FirstOrDefault(creature => creature.Cell == cell);
+        }
+
+        internal static int GetMapSizeFor(this IConfiguration configuratin, string value)
+        {
+            var section = configuratin.GetSection("game:mapsettings");
+            return  int.TryParse(section[value], out int result) ? result : 0;
         }
     }
 }
