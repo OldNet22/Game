@@ -13,6 +13,12 @@ namespace Game.UserInterface
     {
 
         private static MessageLog<string> messageLog = new(6);
+        private readonly IMap map;
+
+        public ConsoleUI(IMap map)
+        {
+            this.map = map;
+        }
 
         public void Clear()
         {
@@ -24,7 +30,7 @@ namespace Game.UserInterface
         //{
         //    return Console.ReadKey(intercept: true).Key;
         //}
-        public void Draw(IMap map)
+        public void Draw()
         {
             for (int y = 0; y < map.Height; y++)
             {

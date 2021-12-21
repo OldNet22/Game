@@ -10,16 +10,17 @@ namespace Game;
 internal class GamePlay
 {
     //ToDo: Fix ?
-    private IMap map = null!;
+    private readonly IMap map;
     private Hero hero = null!;
     private bool gameInProgress;
     private readonly IUI ui;
-    private readonly IConfiguration config;
+    //private readonly IConfiguration config;
 
-    public GamePlay(IUI consoleUI, IConfiguration config)
+    public GamePlay(IUI consoleUI, IMap map)
     {
         ui = consoleUI;
-        this.config = config;
+        this.map = map;
+        // this.config = config;
     }
 
     internal void Run()
@@ -162,7 +163,7 @@ internal class GamePlay
     private void DrawMap()
     {
         ui.Clear();
-        ui.Draw(map);
+        ui.Draw();
         ui.PrintStats($"Health: {hero.Health}, Enemys: {map.Creatures.Count -1}");
         ui.PrintLog();
     }
@@ -171,10 +172,10 @@ internal class GamePlay
 
     private void Initialize()
     {
-        var width = config.GetMapSizeFor("x");
-        var height = config.GetMapSizeFor("y");
+        //var width = config.GetMapSizeFor("x");
+        //var height = config.GetMapSizeFor("y");
 
-        map = new Map(width, height);
+        //map = new Map(width, height);
         var heroCell = map.GetCell(0, 0);
         var defaultCreatureCell = map.GetCell(5, 5);
 

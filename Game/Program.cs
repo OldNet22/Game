@@ -1,5 +1,6 @@
 ﻿
 
+using Game.GameWorld;
 using Microsoft.Extensions.Configuration;
 
 IConfiguration config = new ConfigurationBuilder()
@@ -21,9 +22,12 @@ var mapSettings = config.GetSection("game:mapsettings").GetChildren();
 //        break;
 //}
 
+var startup = new StartUp();
+startup.SetUp();
 
-GamePlay game = new(new ConsoleUI(), config);
-game.Run();
+
+//GamePlay game = new(new ConsoleUI(), new Map(config));
+//game.Run();
 
 Console.WriteLine("Thanks for playing");
 Console.ReadLine();
