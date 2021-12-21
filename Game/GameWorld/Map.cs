@@ -1,5 +1,6 @@
 ﻿using Game.Entities.Creatures;
 using Game.Extensions;
+using Game.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System.Diagnostics;
@@ -15,7 +16,7 @@ public class Map : IMap
 
     public List<Creature> Creatures { get; set; } = new List<Creature>();
 
-    public Map(IConfiguration config, MapSettings settings, IOptions<MapSettings> options)//int width, int height)
+    public Map(IConfiguration config, MapSettings settings, IOptions<MapSettings> options, IMapService mapService)//int width, int height)
     {
 
 
@@ -29,8 +30,12 @@ public class Map : IMap
         //Width = width;
         //Height = height;
 
-        var width = options.Value.X;
-        var height = options.Value.Y;
+        //var width = options.Value.X;
+        //var height = options.Value.Y;
+        //Width = width;
+        //Height = height; 
+
+        var (width, height) = mapService.GetMap();
         Width = width;
         Height = height;
 

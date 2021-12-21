@@ -2,6 +2,7 @@
 using Game.Extensions;
 using Game.GameWorld;
 using Game.LimitedList;
+using Game.Services;
 using Game.UserInterface;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,7 @@ internal class StartUp
     internal void SetUp()
     {
         configuration = GetConfig();
+
         var serviceCollection = new ServiceCollection();
         ConfigureServices(serviceCollection);
 
@@ -32,6 +34,7 @@ internal class StartUp
         services.AddSingleton(configuration);
         services.AddSingleton<ILimitedList<string>>(new MessageLog<string>(6));
         services.AddSingleton<ILimitedList<Item>>(new MessageLog<Item>(3));
+        services.AddSingleton<IMapService, MapService>();
     }
 
     private IConfiguration GetConfig()
