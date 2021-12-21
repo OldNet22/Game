@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Game.LimitedList
 {
-    public class LimitedList<T> : IEnumerable<T>
+    public class LimitedList<T> : ILimitedList<T>
     {
         private int capacity;
         protected List<T> list;
@@ -53,7 +53,7 @@ namespace Game.LimitedList
 
         public void Print(Action<T> action)
         {
-           // list.ForEach(action);
+            // list.ForEach(action);
             list.ForEach(i => action?.Invoke(i));
             //foreach (var item in list)
             //{

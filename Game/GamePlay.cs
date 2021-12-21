@@ -176,6 +176,7 @@ internal class GamePlay
         //var height = config.GetMapSizeFor("y");
 
         //map = new Map(width, height);
+         //map = new Map();
         var heroCell = map.GetCell(0, 0);
         var defaultCreatureCell = map.GetCell(5, 5);
 

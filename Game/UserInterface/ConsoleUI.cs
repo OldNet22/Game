@@ -1,4 +1,5 @@
-﻿using Game.Extensions;
+﻿using Game.Entities.Items;
+using Game.Extensions;
 using Game.GameWorld;
 using Game.LimitedList;
 using System;
@@ -12,12 +13,13 @@ namespace Game.UserInterface
     public class ConsoleUI : IUI
     {
 
-        private static MessageLog<string> messageLog = new(6);
+        private ILimitedList<string> messageLog;
         private readonly IMap map;
 
-        public ConsoleUI(IMap map)
+        public ConsoleUI(IMap map, ILimitedList<string> messageLog) //, ILimitedList<Item> items)
         {
             this.map = map;
+            this.messageLog = messageLog;
         }
 
         public void Clear()
