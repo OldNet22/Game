@@ -3,14 +3,14 @@
 using Game.GameWorld;
 using Microsoft.Extensions.Configuration;
 
-IConfiguration config = new ConfigurationBuilder()
-                    .SetBasePath(Environment.CurrentDirectory)
-                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true )
-                    .Build();
+//IConfiguration config = new ConfigurationBuilder()
+//                    .SetBasePath(Environment.CurrentDirectory)
+//                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true )
+//                    .Build();
 
-var ui = config.GetSection("game:ui").Value;
-var x = config.GetSection("game:mapsettings:x").Value;
-var mapSettings = config.GetSection("game:mapsettings").GetChildren();
+//var ui = config.GetSection("game:ui").Value;
+//var x = config.GetSection("game:mapsettings:x").Value;
+//var mapSettings = config.GetSection("game:mapsettings").GetChildren();
 
 //IUI ui2;
 //switch (ui)

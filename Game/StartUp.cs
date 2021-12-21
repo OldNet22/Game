@@ -1,4 +1,5 @@
-﻿using Game.GameWorld;
+﻿using Game.Extensions;
+using Game.GameWorld;
 using Game.UserInterface;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,7 +23,8 @@ internal class StartUp
     {
         services.AddSingleton<GamePlay>();
         services.AddSingleton<IMap, Map>();
-        services.AddSingleton<IUI, ConsoleUI>();
+        services.GetUI(configuration);
+        //services.AddSingleton<IUI, ConsoleUI>();
         services.AddSingleton(configuration);
     }
 
