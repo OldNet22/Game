@@ -25,16 +25,8 @@ internal class GamePlay
 
     internal void Run()
     {
-        SetGameSize();
         Initialize();
         Play();
-    }
-
-    private void SetGameSize()
-    {
-        int x = 5;
-        int y = 5;
-        map = new Map()
     }
 
     private void Play()
