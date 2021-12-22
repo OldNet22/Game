@@ -45,10 +45,6 @@ namespace Game.Extensions
             return creatures.FirstOrDefault(creature => creature.Cell == cell);
         }
 
-        internal static int GetMapSizeFor(this IConfiguration configuratin, string value)
-        {
-            var section = configuratin.GetSection("game:mapsettings");
-            return  int.TryParse(section[value], out int result) ? result : 0;
-        }
+       
     }
 }
